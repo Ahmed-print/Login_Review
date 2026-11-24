@@ -1,0 +1,26 @@
+# SAVE REVIEW FUNCTION ##
+def save_review(): 
+    # This function is for saving the user's review in the review window
+    global selected_stars, user_LoggedIn # Calls both the seclected_stars and user_LoggedIn global variables
+    if review_text.value == "": 
+        info("Error", "Please enter a review") # Checks if the review text field is empty, if it is, show an error message
+    elif selected_stars == 0: # The user must select a number of stars for their review, if they haven't, show an error message
+        info("Error", "Please select the number of stars")
+    else:
+        query = "INSERT INTO Review (Review_Information, Review_Stars, userID) VALUES (?, ?, ?)"
+        execute_sql(database_file, query, (review_text.value, selected_stars, user_LoggedIn))
+        info("Success", "Review saved successfully")
+        review_text.clear()
+        selected_stars = 0
+        review_stars.value = "Select your stars"
+        show_review()
+
+
+        # 
+        def show_review():
+    # This function is for displaying the user's previous reviews in the review window
+    review_list.clear()
+    query = "SELECT Review_information, Review_stars FROM Review"
+    rows = query_database(database_file, query)
+    for row in rows:
+        review_list.append(str(row[1]) + " stars - " + row[0])
