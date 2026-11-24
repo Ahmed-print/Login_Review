@@ -1,0 +1,43 @@
+def apply_theme(): # For Dark Mode and Light Mode, this function is called when the user clicks on the "Dark Mode" or "Light Mode" button in the settings window
+    if dark_mode:
+        bg_color = "#1e1e1e"
+        fg_color = "white"
+    else:
+        bg_color = "lightblue"
+        fg_color = "black"
+
+    for window in ALL_WINDOWS: # To change the colors for all the windows
+        window.bg = bg_color
+
+    for text_widget in ALL_TEXTS: # To change the colors for all the text widgets
+        text_widget.text_color = fg_color
+
+    for button_widget in ALL_BUTTONS:
+        button_widget.bg = bg_color
+        button_widget.text_color = fg_color
+
+
+def set_dark_mode():
+    # This fucntion is for setting the dark mode theme in the settings window when the user clicks on the "Dark Mode" button
+    global dark_mode
+    dark_mode = True
+    apply_theme()
+
+
+def set_light_mode():
+    # This fucntion is for setting the light mode theme in the settings window when the user clicks on the "Light Mode" button
+    global dark_mode
+    dark_mode = False
+    apply_theme()
+
+
+def set_font_size(value):
+    # This function is for setting the font size in the settings window when the user clicks on the "Font Size" slider
+    global font_size
+    font_size = int(value)
+
+    for text_widget in ALL_TEXTS:
+        text_widget.text_size = font_size
+
+    for button_widget in ALL_BUTTONS:
+        button_widget.text_size = font_size
