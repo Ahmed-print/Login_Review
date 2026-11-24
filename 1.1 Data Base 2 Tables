@@ -1,0 +1,53 @@
+# SQL creation and inserting test data for the database
+sql = """ 
+CREATE TABLE "User" ( 
+"userID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+"user_name" TEXT,
+"user_firstname" TEXT,
+"user_surname" TEXT,
+"user_password" TEXT,
+"user_email" TEXT
+); 
+CREATE TABLE "Review" (
+"ReviewID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+"Review_date" TEXT,
+"Review_Stars" TEXT,
+"Review_Information" TEXT,
+"userID" INTEGER,
+FOREIGN KEY(userID) REFERENCES User(userID)
+);
+insert into User (user_name, user_firstname, user_surname, user_password, user_email) values ('Ahmed', 'Ewan', 'RJ', 'pw1', 'Joe@gmail.com'); 
+insert into User (user_name, user_firstname, user_surname, user_password, user_email) values ('Connor', 'Perace', 'Joe', 'pw1', 'Connor@gmail.com');
+insert into Review (Review_date, Review_Stars, Review_information, userID) values ('2025/12/25', '5', 'Perfect, Highly Recommended', '1');
+""" # Thats the SQL code to create the database and insert some test data into it. It creates two tables: User and Review, and inserts two users and one review into the database.
+
+# ============================================================
+# GLOBAL VARIABLES (everything global lives here, in one place)
+# ============================================================
+database_file = 'myDB.db'      # The name of the database file
+selected_stars = 0             # Number of stars selected for a review
+user_LoggedIn = 0              # userID of the currently logged in user
+dark_mode = False              # Current theme state
+font_size = 12                 # Current font size, adjustable 10-20
+COOKIE_FILE = 'remember_me.txt' # File to store the "remember me" cookie for the user to accept
+
+ALL_WINDOWS = []                # Filled in once the windows are created below
+ALL_TEXTS = []                  # Filled in once the Text widgets are created below
+ALL_BUTTONS = []                # Filled in once the PushButtons are created below
+# ============================================================
+
+TERMS_AND_CONDITIONS_TEXT = """SWIM FITNESS - TERMS AND CONDITIONS 
+
+1. You must provide accurate information when creating your account.
+2. Your password is stored so you can log back in - do not share your account.
+3. Reviews you submit are public and should be honest and respectful.
+4. We may remove any review or account that breaks these rules.
+5. By creating an account you agree to these terms.""" # Terms and conditions text to be displayed when the user clicks on the "View Terms and Conditions" button in the sign up window.
+
+if os.path.exists(database_file): # Check if the database file already exists, if it does, delete it to start fresh
+    os.remove(database_file) # Delte the database file if it exists, so we can create a new one with the same name
+
+conn = sqlite3.connect(database_file)
+cursor = conn.cursor()
+cursor.executescript(sql)
+conn.commit()
