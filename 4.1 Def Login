@@ -1,0 +1,18 @@
+def login_user(): # Thats the function that is called when the user clicks on the "Login" button in the login window.
+    global user_LoggedIn # Calls the global variable user_LoggedIn so we can set it to the userID of the logged in user
+
+    if login_username.value == "": # Check if the username field is empty, if it is, show an error message
+        info("Error", "You must enter a valid username")
+    elif login_pw.value == "": # Checks if the password field is empty, if it is, show an error message
+        info("Error", "You must enter a valid password")
+    else:
+        query = "SELECT * from User WHERE user_name = ? AND user_password = ?" # if the username and password fields are not empty, query the database to check if the username and password match a user in the database
+        rows = query_database(database_file, query, (login_username.value, login_pw.value))
+
+        if len(rows) == 0: # Checks if the query returned any rows, if it didn't, show an error message
+            info("Error", "Invalid Password Or Username")
+        else:
+            user_LoggedIn = rows[0][0]
+            info("Success", "Welcome " + rows[0][2] + "!")
+            app.hide()
+            review_window.show()
