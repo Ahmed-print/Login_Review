@@ -1,0 +1,29 @@
+# FRONT END IS DEFINED HERE
+# https://lawsie.github.io/guizero/window/
+
+# Login window is start up window
+app = App(title="Login", height=400, bg="lightblue")
+top_bar = Box(app, width="fill", align="top")
+logo_pic = Picture(top_bar, image="Logo2.png", align="left")
+settings_open_button = PushButton(top_bar, text="Settings", align="right", command=open_settings)
+
+login_spacetxt = Text(app, text="                                    ")
+login_spacetxt2 = Text(app, text="                                    ")
+login_toptxt = Text(app, text="Swimming Fitness", size=20)
+login_toptxt2 = Text(app, text="Please enter your details below and press login", size=9)
+login_spacetxt3 = Text(app, text="                                    ")
+
+login_box = Box(app, layout="grid")
+login_blanktxt1 = Text(login_box, text="            ", grid=[1, 0])
+login_txt1 = Text(login_box, text="Enter Username", align="left", grid=[0, 0], size=15)
+login_username = TextBox(login_box, hide_text=False, align="left", grid=[2, 0], width=30)
+
+login_blanktxt2 = Text(login_box, text="            ", grid=[1, 1])
+login_txt2 = Text(login_box, text="Enter Password", align="left", grid=[0, 1], size=15)
+login_pw = TextBox(login_box, hide_text=True, align="left", grid=[2, 1], width=30)
+
+login_button = PushButton(app, text="Login", command=login_user)
+login_signup = PushButton(app, text="Signup", command=Open_Signup)
+
+login_bottom_text = PushButton(app, text="Forgot your password?", command=Open_ForgotPssword)
+login_bottom_text.text_color = "Tomato
