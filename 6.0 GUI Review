@@ -1,0 +1,32 @@
+#
+# REVIEW WINDO
+# 
+review_window = Window(app, title="Leave a Review", height=550, width=600, bg="#c9e4ca")
+
+review_back_button = PushButton(review_window, text="Back to Login", command=back_to_login_from_review)
+
+review_title = Text(review_window, text="Leave a Review", size=20)
+
+review_text_label = Text(review_window, text="Write your review:")
+
+review_text = TextBox(review_window, width=40, height=5, multiline=True)
+
+review_star_label = Text(review_window, text="Select number of stars:")
+
+review_star_box = Box(review_window, layout="grid")
+
+# This is the stars selection buttons, when the user clicks on a star button, the select_stars function is called with the number of stars selected as an argument
+star1 = PushButton(review_star_box, text="1 Star", command=lambda: select_stars(1), grid=[0, 0])
+star2 = PushButton(review_star_box, text="2 Stars", command=lambda: select_stars(2), grid=[1, 0])
+star3 = PushButton(review_star_box, text="3 Stars", command=lambda: select_stars(3), grid=[2, 0])
+star4 = PushButton(review_star_box, text="4 Stars", command=lambda: select_stars(4), grid=[3, 0])
+star5 = PushButton(review_star_box, text="5 Stars", command=lambda: select_stars(5), grid=[4, 0])
+
+review_stars = Text(review_window, text="Select your stars")
+
+review_save_button = PushButton(review_window, text="Save Review", command=save_review)
+
+previous_reviews = Text(review_window, text="Previous Reviews", size=15)
+
+review_list = ListBox(review_window, width=60, height=8)
+review_window.hide()
