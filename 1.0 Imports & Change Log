@@ -1,0 +1,16 @@
+################################################################################################
+# PROGRAM NAME: Swim Fitness
+# FIRST CREATED: 25/06/2025
+# PROGRAMMER: Ahmed Amer (AA)
+################################################################################################
+# CHANGE LOG:
+# +--------------------------------------------------------------------------+
+# | 25/06/2025    V1       DATABASE/LOGIN/SIGNUP CREATED             AA      |
+# | 06/07/2025    V2       DASHBOARD/REVIEWS CREATED                 AA      |
+# | 08/09/2026    V3       REVIEWS/SIGNUP VALIDATION                 AA      |
+# +--------------------------------------------------------------------------+
+
+# IMPORTS #####
+from guizero import App, Window, PushButton, Text, Box, TextBox, Picture, info, ListBox, CheckBox, Slider # Imports to create GUI elements for the application
+import sqlite3 # Imports to create and manage the database for the application
+import os # For file managemnt
