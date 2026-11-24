@@ -1,0 +1,7 @@
+TERMS_AND_CONDITIONS_TEXT = """SWIM FITNESS - TERMS AND CONDITIONS 
+
+1. You must provide accurate information when creating your account.
+2. Your password is stored so you can log back in - do not share your account.
+3. Reviews you submit are public and should be honest and respectful.
+4. We may remove any review or account that breaks these rules.
+5. By creating an account you agree to these terms.""" # Terms and conditions text to be displayed when the user clicks on the "View Terms and Conditions" button in the sign up window.
