@@ -1,0 +1,22 @@
+review_window.hide()
+#
+# FORGOT PASSWORD WINDOW
+#
+forgot_window = Window(app, title="Forgot Password", height=300, width=400, bg="lavender")
+forgot_back_button = PushButton(forgot_window, text="Back to Login", command=back_to_login_from_review)
+
+forgot_title = Text(forgot_window, text="Reset your password", size=20)
+
+forgot_box = Box(forgot_window, layout="grid")
+forgot_txt1 = Text(forgot_box, text="Enter your username", align="left", grid=[0, 0], size=15)
+forgot_email = TextBox(forgot_box, grid=[1, 0], width=30)
+
+forgot_txt2 = Text(forgot_box, text="New Password", align="left", grid=[0, 1], size=15)
+forgot_newpw = TextBox(forgot_box, hide_text=True, grid=[1, 1], width=30)
+
+forgot_txt3 = Text(forgot_box, text="Confirm Password", align="left", grid=[0, 2], size=15)
+forgot_confirm_newpw = TextBox(forgot_box, hide_text=True, grid=[1, 2], width=30)
+
+forgot_save_button = PushButton(forgot_window, text="Reset Password", command=reset_password)
+
+forgot_window.hide()
