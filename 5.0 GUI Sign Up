@@ -1,0 +1,44 @@
+#
+# Sign up window
+#
+sign_window = Window(app, title="Sign up", height=500, bg="lavender")
+
+sign_exit_box = Box(sign_window, width="fill", align="top")
+sign_exit_button = PushButton(sign_exit_box, text="Back to Login", align="left", command=back_to_login)
+sign_exit_button.bg = "#87bba2"
+
+sign_toptxt = Text(sign_window, text="Swimming Fitness", size=20)
+sign_toptxt2 = Text(sign_window, text="Please Enter Details", size=15)
+
+sign_box = Box(sign_window, layout="grid")
+sign_blanktxt1 = Text(sign_box, text="            ", grid=[1, 0])
+sign_username_label = Text(sign_box, text="Enter Username", align="left", grid=[0, 0], size=15)
+sign_username = TextBox(sign_box, hide_text=False, grid=[2, 0], width=30)
+sign_username.bg = '#87bba2'
+
+sign_blanktxt2 = Text(sign_box, text="            ", grid=[1, 1])
+sign_pw1_label = Text(sign_box, text="Enter Password", align="left", grid=[0, 1], size=15)
+sign_pw1 = TextBox(sign_box, hide_text=True, grid=[2, 1], width=30)
+
+sign_blanktxt3 = Text(sign_box, text="            ", grid=[1, 2])
+sign_pw2_label = Text(sign_box, text="Confirm Password", align="left", grid=[0, 2], size=15)
+sign_pw2 = TextBox(sign_box, hide_text=True, grid=[2, 2], width=30)
+
+sign_blanktxt4 = Text(sign_box, text="            ", grid=[1, 3])
+sign_FirstName_label = Text(sign_box, text="Enter First Name", align="left", grid=[0, 3], size=15)
+sign_FirstName = TextBox(sign_box, hide_text=False, grid=[2, 3], width=30)
+
+sign_blanktxt5 = Text(sign_box, text="            ", grid=[1, 4])
+sign_Surname_label = Text(sign_box, text="Enter Surname", align="left", grid=[0, 4], size=15)
+sign_Surname = TextBox(sign_box, hide_text=False, grid=[2, 4], width=30)
+
+sign_blanktxt6 = Text(sign_box, text="            ", grid=[1, 5])
+sign_Email_label = Text(sign_box, text="Enter Email", align="left", grid=[0, 5], size=15)
+sign_Email = TextBox(sign_box, hide_text=False, grid=[2, 5], width=30)
+
+sign_terms_button = PushButton(sign_window, text="View Terms and Conditions", command=show_terms)
+sign_terms_checkbox = CheckBox(sign_window, text="I agree to the Terms and Conditions")
+
+sign_save_button = PushButton(sign_window, text="Save", command=signup_create_account)
+
+sign_window.hide()
