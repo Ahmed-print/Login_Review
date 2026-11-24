@@ -1,0 +1,37 @@
+def signup_create_account(): # This fucntion is for creating a new account for the user
+    username = sign_username.value # Username is taken from the sign_username TextBox
+    password = sign_pw1.value # Password is taken from the sign_pw1 TextBox
+    confirm_password = sign_pw2.value # Confirm password is taken from the sign_pw2 TextBox
+    firstname = sign_FirstName.value # First name is taken from the sign_FirstName TextBox
+    surname = sign_Surname.value # Surname is taken from the sign_Surname TextBox
+    email = sign_Email.value # Email is taken from the sign_Email TextBox
+
+    if username == "": # Checks if theres a username entered, if not, show an error message
+        info("Error", "Please enter a username")
+    elif password == "": # Checks if theres a password entered, if not, show an error message
+        info("Error", "Please enter a password")
+    elif confirm_password == "": # Asks for confirmation of the password, if not entered, show an error message
+        info("Error", "Please confirm your password")
+    elif password != confirm_password: # Checks if the password and confirm password match, if not, show an error message
+        info("Error", "Passwords do not match")
+    elif firstname == "": # Asks for the first name, if not entered, show an error message
+        info("Error", "Please enter your first name")
+    elif surname == "": # Asks for the surname, if not entered, show an error message
+        info("Error", "Please enter your surname")
+    elif email == "": # Asks for the email, if not entered, show an error message
+        info("Error", "Please enter your email")
+    elif username.isalpha() == False: # Checks if the username contains only letters (type check), if not, show an error message
+        info("Error", "Username cannot contain numbers or special characters")
+    elif firstname.isalpha() == False: # Checks if the first name contains only letters, if not, show an error message
+        info("Error", "Firstname cannot contain numbers or special characters")
+    elif surname.isalpha() == False: # Checks if the surname contains only letters, if not, show an error message
+        info("Error", "Surname cannot contain numbers or special characters")
+    elif sign_terms_checkbox.value == 0: # Checks if the user has agreed to the terms and conditions, if not they wont be allowed to create an account and an error message will be shown
+        info("Error", "You must agree to the Terms and Conditions to sign up")
+    else: # If all the above checks pass, the account is created and the user is shown a success message
+        query = "INSERT INTO User (user_name, user_firstname, user_surname, user_password, user_email) VALUES (?, ?, ?, ?, ?)"
+        execute_sql(database_file, query, (username, firstname, surname, password, email))
+        info("Success", "Account successfully created") # The user is shown a success message
+        sign_terms_checkbox.value = 0
+        sign_window.hide()
+        app.show()
