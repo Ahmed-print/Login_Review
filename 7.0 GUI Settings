@@ -1,0 +1,47 @@
+#
+# SETTINGS WINDOW
+#   
+settings_window = Window(app, title="Settings", height=300, width=400, bg="lightblue")
+settings_title = Text(settings_window, text="Settings", size=20)
+
+theme_title = Text(settings_window, text="Select Theme", size=15)
+light_button = PushButton(settings_window, text="Light Mode", command=set_light_mode)
+dark_button = PushButton(settings_window, text="Dark Mode", command=set_dark_mode)
+
+font_title = Text(settings_window, text="Select Font Size", size=15)
+font_slider = Slider(settings_window, start=10, end=20, command=set_font_size)
+font_slider.value = font_size
+settings_window.hide()
+
+# ------------------------------------------------------------
+# Populate the theme lists declared up in GLOBAL VARIABLES,
+# now that every widget actually exists
+# ------------------------------------------------------------
+ALL_WINDOWS.extend([app, sign_window, review_window, forgot_window, settings_window])
+
+ALL_TEXTS.extend([
+    login_toptxt, login_toptxt2, login_txt1, login_txt2,
+    sign_toptxt, sign_toptxt2, sign_username_label, sign_pw1_label, sign_pw2_label, # To change the text color of all the Text widgets in the sign up window
+    sign_FirstName_label, sign_Surname_label, sign_Email_label,
+    review_title, review_text_label, review_star_label, review_stars, previous_reviews,
+    forgot_title, forgot_txt1, forgot_txt2, forgot_txt3,
+    settings_title, theme_title, font_title, # To change the text color of all the Text widgets in the settings window
+    login_username, login_pw,
+    sign_username, sign_pw1, sign_pw2, sign_FirstName, sign_Surname, sign_Email,
+    review_text, forgot_email, forgot_newpw, forgot_confirm_newpw, review_list,
+])
+
+ALL_BUTTONS.extend([
+    settings_open_button, login_button, login_signup, login_bottom_text, # To change the text color of all the PushButton widgets in the login window
+    sign_exit_button, sign_save_button, sign_terms_button,
+    review_back_button, star1, star2, star3, star4, star5, review_save_button,
+    forgot_back_button, forgot_save_button,
+    light_button, dark_button,
+])
+
+ALL_TEXTS.append(sign_terms_checkbox)  # CheckBox text color follows the same theme list
+
+set_font_size(font_size) # Set the initial font size for all text and button widgets based on the global variable font_size
+apply_theme()  # apply the default (light) theme on startup
+
+app.display() # Start the GUI application and display the login window
